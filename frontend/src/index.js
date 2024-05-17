@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './assets/styles/bootstrap.custom.css';
 import './assets/styles/index.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {
@@ -28,15 +29,19 @@ import ProductListScreen from './screens/admin/ProductListScreen';
 import ProductEditScreen from './screens/admin/ProductEditScreen';
 import UserListScreen from './screens/admin/UserListScreen';
 import UserEditScreen from './screens/admin/UserEditScreen';
+import ContactScreen from './screens/ContactScreen';
 import store from './store';
 import { Provider } from 'react-redux';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
+import SaveForLaterScreen from './screens/SaveForLaterScreen';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route index={true} path='/' element={<HomeScreen />} />
       <Route path='/search/:keyword' element={<HomeScreen />} />
+      <Route path='/sortprice' element={<HomeScreen/>}/>
+      <Route path='/sortcategory' element={<HomeScreen/>}/>
       <Route path='/page/:pageNumber' element={<HomeScreen />} />
       <Route
         path='/search/:keyword/page/:pageNumber'
@@ -46,6 +51,7 @@ const router = createBrowserRouter(
       <Route path='/cart' element={<CartScreen />} />
       <Route path='/login' element={<LoginScreen />} />
       <Route path='/register' element={<RegisterScreen />} />
+      <Route path='/saveforlater' element={<SaveForLaterScreen />} />
       {/* Registered users */}
       <Route path='' element={<PrivateRoute />}>
         <Route path='/shipping' element={<ShippingScreen />} />
@@ -53,6 +59,7 @@ const router = createBrowserRouter(
         <Route path='/placeorder' element={<PlaceOrderScreen />} />
         <Route path='/order/:id' element={<OrderScreen />} />
         <Route path='/profile' element={<ProfileScreen />} />
+        <Route path="/contact" element={<ContactScreen />} />
       </Route>
       {/* Admin users */}
       <Route path='' element={<AdminRoute />}>
@@ -84,3 +91,4 @@ root.render(
 );
 
 reportWebVitals();
+
